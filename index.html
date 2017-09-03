@@ -3,8 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <title>Codability</title>
+    <link href='css/style.css' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
 </head>
 <body>
-    Demo github page
+<!---start-wrap---->
+<!---start-header---->
+<div class="header">
+    <div class="wrap">
+        <div class="logo">
+            <a href="#home">Codability</a>
+        </div>
+        <div class="top-nav">
+            <ul>
+                <li class="active"><a href="#long-term-obj" class="scroll">Purpose</a></li>
+                <li><a href="#short-term-tasks" class="scroll">Short Term Tasks</a></li>
+                <li><a href="#state-of-the-art" class="scroll">State of the Art</a></li>
+                <li><a href="#references" class="scroll">References</a></li>
+                <li><a href="#challenges" class="scroll">Challenges</a></li>
+                <li><a href="#links" class="scroll">Support</a></li>
+            </ul>
+        </div>
+        <div class="clear"> </div>
+    </div>
+    <!---//End-header---->
+</div>
+
+<!---start-image-banner---->
+<div class="img-banner" id="home">
+    <div class="img-banner-info">
+        <h1><span>Codability</span> </h1>
+        <h2>Talk & code</h2>
+        <p>A plugin developed for the IntelliJ IDEA platform in order to enable users to control the IDE and write code efficiently through Speech Recognition Technologies</p>
+        <div class="clear"> </div>
+        <div class="info-btns">
+            <ul>
+                <li><a href="#"> </a></li>
+                <li><a href="#"> </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="img-banner-pic">
+    </div>
+    <div class="clear"> </div>
+</div>
+<!---//End-image-banner---->
+
+<!---start-top-grids----->
+<div class="lto-grids" id="long-term-obj">
+    <div class="wrap">
+        <h3>Sample title</h3>
+        <p>Write something here</p>
+        <div class="clear"> </div>
+    </div>
+</div>
+<!---//End-top-grids----->
+
+<!---start-mid-grids----->
+<div class="mid-grid-top" id="short-term-tasks">
+    <div class="wrap">
+        <div class="mid-grid-top-pic">
+        </div>
+        <div class="mid-grid-top-info">
+            <h3>Sample title</h3>
+            <p>Write something here</p>
+        </div>
+        <div class="clear"> </div>
+    </div>
+</div>
+
+<div class="mid-grids-center" id="state-of-the-art">
+    <div class="wrap">
+        <h3>Sample title</h3>
+        <p>Write something here</p>
+    </div>
+</div>
+
+<div class="mid-grids-bottom" id="references">
+    <div class="wrap">
+        <!-- List of articles, books, software components and libraries and personal communications related to the design and the implementation of the application-->
+        <h3>Sample title</h3>
+        <p>Write something here</p>
+        <p class="credits">Credits are given to W3layouts for providing the basic skeleton, which was then modified and slightly re-designed.</p>
+    </div>
+</div>
+
+<div class="mid-grids-center" id="challenges">
+    <div class="wrap">
+        <h3>Sample title</h3>
+        <p>Write something here</p>
+    </div>
+</div>
+<!---//End-mid-grids----->
+
+
+<!---start-btm-grids----->
+<div class="link-grids" id="links">
+    <div class="wrap">
+        <div class="link-grid">
+            <a class="jetbrains-icon" href="http://"><span> </span> </a>
+            <h3>Codability</h3>
+            <p>Codability hosted at <label>Jetbrains</label></p>
+            <a class="btn" href="http://">Visit web site<span> </span></a>
+        </div>
+        <div class="link-grid">
+            <a class="github-icon" href="https://github.com/aptsaous/Codability"><span> </span> </a>
+            <h3>GitHub</h3>
+            <p>Source code is uploaded at <label>GitHub.</label></p>
+            <a class="btn" href="https://github.com/aptsaous/Codability">View source code<span> </span></a>
+        </div>
+        <div class="link-grid">
+            <a class="fb-icon" href="https://www.facebook.com/"><span> </span> </a>
+            <h3>Facebook</h3>
+            <p>To get informed for all the latest updates and features we provide a page at <label>Facebook.</label></p>
+            <a class="btn" href="https://www.facebook.com/">Follow us<span> </span></a>
+        </div>
+        <div class="clear"> </div>
+    </div>
+</div>
+<!---//End-top-grids----->
+
+
+<!---start-footer----->
+<div class="footer">
+    <div class="wrap">
+        <p>Initial Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        <p>Re-designed, Modified & Edited by Apostolos Tsaousis</p>
+        <script type="text/javascript">
+			$(document).ready(function() {
+				/*
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear'
+		 		};
+				*/
+
+				$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+		</script>
+        <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    </div>
+</div>
+
+<!---//End-footer----->
+
+
+<!---//End-wrap---->
 </body>
 </html>
