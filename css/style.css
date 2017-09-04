@@ -123,8 +123,8 @@ body{
 	width: 180px;
 	height: 53px;
 	display: block;
-	/*background: url(../images/img-sprit.png) no-repeat #F2F4F5 -172px -879px; */
-	background: url(https://raw.githubusercontent.com/aptsaous/Codability/gh-pages/images/img-sprit.png) no-repeat #F2F4F5 -172px -879px;
+	background: url(../images/img-sprit.png) no-repeat #F2F4F5 -172px -879px;
+	/*background: url(https://raw.githubusercontent.com/aptsaous/Codability/gh-pages/images/img-sprit.png) no-repeat #F2F4F5 -172px -879px;*/
 }
 .info-btns ul li:nth-child(2) a{
 	width: 180px;
