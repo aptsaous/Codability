@@ -103,7 +103,8 @@ body{
 	float: right;
 	width: 47.3%;
 	text-align: left;
-	background: url(../images/screen_low_2.png) no-repeat -100px -20px;
+	/*background: url(../images/screen_low_2.png) no-repeat -100px -20px;*/
+	background: url(../images/screen_low_2.png) no-repeat 4px 80px;
 	height: 598px;
 	margin-bottom: 1.5em;
 
@@ -603,10 +604,12 @@ body{
 		width: 51%;
 	}
 	.img-banner-pic {
-		width: 43.3%;
+	    width: 51.3%
+		/*width: 43.3%;*/
 	}
 	.img-banner-info {
-		width: 53%;
+	    width: 47%;
+		/*width: 53%;*/
 	}
 	.mid-grid-top-pic {
 		width: 31%;
