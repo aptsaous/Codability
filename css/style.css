@@ -43,6 +43,8 @@ body{
 }
 .logo{
 	float: left;
+	font-size: 71%;
+    margin-left: -2%;
 }
 .logo a{
 	color:#000;
@@ -629,10 +631,12 @@ body{
 		width: 64%;
 	}
 	.img-banner-pic {
-		width: 43.3%;
+	    width: 55.3%;
+		/*width: 43.3%;*/
 	}
 	.img-banner-info {
-		width: 53%;
+	    width: 44%;
+		/*width: 53%;*/
 	}
 	.mid-grid-top-pic {
 		width: 39%;
