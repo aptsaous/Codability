@@ -112,9 +112,11 @@ body{
 
 }
 .img-banner-info p{
-	width:75%;
+    width: 90%;
+	/*width:75%;*/
 	float:right;
 	margin-top:1em;
+	font-size: 92%;
 }
 .info-btns ul li{
 	display:inline-block;
@@ -618,6 +620,9 @@ body{
 	}
 	.mid-grid-top-info {
 		width: 67%;
+	}
+	.logo {
+	    font-size: 100%
 	}
 }
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
