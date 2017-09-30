@@ -27,10 +27,17 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
+    <httpRequestHandler implementation="org.jetbrains.ide.ProjectSetRequestHandler"/>
+    <httpRequestHandler implementation="gr.inf.codability.core.RequestHandler"/>
   </extensions>
 
   <actions>
     <!-- Add your actions here -->
   </actions>
 
+    <application-components>
+        <component>
+            <implementation-class>gr.inf.codability.core.CodabilityRegistration</implementation-class>
+        </component>
+    </application-components>
 </idea-plugin>
