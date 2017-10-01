@@ -6,13 +6,12 @@ import com.intellij.notification.NotificationType;
 import javax.swing.*;
 import java.util.Random;
 
-import static gr.inf.codability.core.CodabilityRegistration.activationCode;
-
 public class Notifications
 {
-    static String groupDisplayId = "Codability";
-    static int timerDelay = 3000;
-    static Notification syncNotification;
+    private static String groupDisplayId = "Codability";
+    private static int timerDelay = 3000;
+    public static Notification syncNotification;
+    public static String activationCode;
 
     public static void showInfo( String title, String content )
     {
@@ -38,7 +37,7 @@ public class Notifications
         timer.start();
     }
 
-    public static void showActivationCode()
+    static void showActivationCode()
     {
 
         String title = "Activation Code";

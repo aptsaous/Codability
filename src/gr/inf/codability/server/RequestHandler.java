@@ -1,6 +1,7 @@
-package gr.inf.codability.core;
+package gr.inf.codability.server;
 
 import com.intellij.openapi.diagnostic.Logger;
+import gr.inf.codability.core.Notifications;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpRequest;
@@ -13,7 +14,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static gr.inf.codability.core.CodabilityRegistration.activationCode;
+import static gr.inf.codability.core.CodabilityRegistration.commandDecoder;
+import static gr.inf.codability.core.Notifications.activationCode;
 import static gr.inf.codability.core.Notifications.syncNotification;
 
 public class RequestHandler extends HttpRequestHandler
@@ -74,10 +76,12 @@ public class RequestHandler extends HttpRequestHandler
             /* Get, analyze and execute cmd */
             if ( parameters.containsKey( "cmd" ) )
             {
+                commandDecoder.decode( parameters );
                 Responses.send( HttpResponseStatus.OK, channelHandlerContext.channel() );
+
                 return true;
             }
-            
+
         }
 
 

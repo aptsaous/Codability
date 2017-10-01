@@ -28,7 +28,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
     <httpRequestHandler implementation="org.jetbrains.ide.ProjectSetRequestHandler"/>
-    <httpRequestHandler implementation="gr.inf.codability.core.RequestHandler"/>
+    <httpRequestHandler implementation="gr.inf.codability.server.RequestHandler"/>
   </extensions>
 
   <actions>

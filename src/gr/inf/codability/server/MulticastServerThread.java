@@ -1,4 +1,4 @@
-package gr.inf.codability.core;
+package gr.inf.codability.server;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -8,9 +8,9 @@ import java.net.UnknownHostException;
 
 public class MulticastServerThread implements Runnable
 {
-    final static String INET_ADDR = "224.0.0.3";
-    final static int INTELLIJ_PORT = 8888;
-    final static int MCAST_PORT = 6666;
+    private final static String INET_ADDR = "224.0.0.3";
+    private final static int INTELLIJ_PORT = 8888;
+    private final static int MCAST_PORT = 6666;
 
     @Override
     public void run()
