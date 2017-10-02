@@ -100,15 +100,44 @@ public class Command
             setParams( "variable" );
             setParams( "function" );
         }
+        else if ( command.startsWith( "open class" ) )
+        {
+            name = OPEN_CLASS;
+            type = OP;
+
+            setParams( "name" );
+        }
+        else if ( command.startsWith( "create class" ) )
+        {
+            name = CREATE_CLASS;
+            type = INS;
+
+            setParams( "name" );
+        }
+        else if ( command.startsWith( "create project" ) )
+        {
+            name = CREATE_PROJECT;
+            type = OP;
+
+            setParams( "name" );
+        }
 
     }
 
     void execute()
     {
         if ( name == GO_TO )
-            go_to( params );
-        else if ( ( name == INS_MODE ) || ( name == OP_MODE ) )
-            change_mode( type );
+            goTo( params );
+        else if ( name == INS_MODE )
+            changeMode( INS );
+        else if ( name == OP_MODE )
+            changeMode( OP );
+        else if ( name == OPEN_CLASS )
+            openClassName( params );
+        else if ( name == CREATE_CLASS )
+            createClassName( params );
+        else if ( name == CREATE_PROJECT )
+            createProjectByName( params );
     }
 
     private void setParams( String key )
@@ -118,22 +147,16 @@ public class Command
         {
             if ( parameters[i].equals( key ) )
             {
-                if ( i + 1 <= parameters.length )
-                    params.put( key, parameters[ i + 1 ] );
+                StringBuilder paramList = new StringBuilder();
+
+                for ( int j = i + 1; j < parameters.length; j++ )
+                    paramList.append( parameters[j] + ' ' );
+
+                params.put( key, paramList.toString().trim() );
 
                 break;
             }
         }
-    }
-
-    public CommandType getType()
-    {
-        return type;
-    }
-
-    public void setType( CommandType type )
-    {
-        this.type = type;
     }
 
     public String getCommand()

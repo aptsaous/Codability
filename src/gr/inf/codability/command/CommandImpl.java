@@ -4,13 +4,19 @@ import gr.inf.codability.core.Notifications;
 import gr.inf.codability.functions.CaretPosition;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
+import static gr.inf.codability.command.CommandType.INS;
+import static gr.inf.codability.command.CommandType.OP;
+import static gr.inf.codability.functions.Create.createProject;
+import static gr.inf.codability.functions.Open.openClass;
+import static gr.inf.codability.functions.Create.createClass;
 import static gr.inf.codability.functions.WordToNumber.convertWordToNum;
 import static gr.inf.codability.command.CommandDecoder.currentCmdType;
 
 class CommandImpl
 {
-    static void go_to( HashMap<String, String> params )
+    static void goTo( HashMap<String, String> params )
     {
         if ( params.containsKey( "line" ) )
         {
@@ -77,24 +83,69 @@ class CommandImpl
         }
     }
 
-    static void change_mode( CommandType type )
+    static void changeMode( CommandType type )
     {
-        if ( type != currentCmdType )
+        if ( currentCmdType != type )
             currentCmdType = type;
 
         switch ( type )
         {
-            case HYBRID:
-                Notifications.showInfo( "Mode Changed", "Hybrid mode" );
-                break;
             case INS:
                 Notifications.showInfo( "Mode Changed", "Insert mode" );
                 break;
             case OP:
                 Notifications.showInfo( "Mode Changed", "Op mode" );
                 break;
-
         }
+    }
+
+    static void openClassName( HashMap<String, String> nameOfClass )
+    {
+        if ( nameOfClass.get( "name" ) == null )
+            return;
+
+        String[] tokens = nameOfClass.get( "name" ).split( "\\s" );
+        StringBuilder className = new StringBuilder();
+
+        for ( String str : tokens )
+        {
+            className.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
+        }
+
+        openClass( className.toString().trim() );
+
+    }
+
+    static void createClassName( HashMap<String, String> nameOfClass )
+    {
+        if ( nameOfClass.get( "name" ) == null )
+            return;
+
+        String[] tokens = nameOfClass.get( "name" ).split( "\\s" );
+        StringBuilder className = new StringBuilder();
+
+        for ( String str : tokens )
+        {
+            className.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
+        }
+
+        createClass( className.toString().trim() );
+    }
+
+    static void createProjectByName( HashMap<String, String> nameOfProject )
+    {
+        if ( nameOfProject.get( "name" ) == null )
+            return;
+
+        String[] tokens = nameOfProject.get( "name" ).split( "\\s" );
+        StringBuilder projectName = new StringBuilder();
+
+        for ( String str : tokens )
+        {
+            projectName.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
+        }
+
+        createProject( projectName.toString().trim() );
     }
 
 }
