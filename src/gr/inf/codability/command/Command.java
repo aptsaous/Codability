@@ -110,7 +110,14 @@ public class Command
         else if ( command.startsWith( "create class" ) )
         {
             name = CREATE_CLASS;
-            type = INS;
+            type = OP;
+
+            setParams( "name" );
+        }
+        else if ( command.startsWith( "open project" ) )
+        {
+            name = OPEN_PROJECT;
+            type = OP;
 
             setParams( "name" );
         }
@@ -120,6 +127,26 @@ public class Command
             type = OP;
 
             setParams( "name" );
+        }
+        else if ( command.equals( "execute" ) )
+        {
+            name = EXECUTE;
+            type = OP;
+        }
+        else if ( command.startsWith( "insert instance variable" ) )
+        {
+            name = INSERT_INST_VAR;
+            type = INS;
+
+            String[] keys = { "class", "name", "type" };
+            String[] prefix = { "with", "of" };
+
+            setParamsInstanceVar( keys, prefix );
+        }
+        else if ( command.equals( "insert main function" ) )
+        {
+            name = INSERT_MAIN;
+            type = INS;
         }
 
     }
@@ -138,6 +165,42 @@ public class Command
             createClassName( params );
         else if ( name == CREATE_PROJECT )
             createProjectByName( params );
+        else if ( name == OPEN_PROJECT )
+            openProjectByName( params );
+        else if ( name == EXECUTE )
+            runApp();
+        else if ( name == INSERT_INST_VAR )
+            addInstanceVar( params );
+        else if ( name == INSERT_MAIN )
+            createMain();
+    }
+
+    private void setParamsInstanceVar( String[] keys, String[] prefix )
+    {
+        for ( String key : keys )
+        {
+            for ( int i = 0; i < parameters.length; i++ )
+            {
+                if ( parameters[i].equals( key ) )
+                {
+                    StringBuilder paramList = new StringBuilder();
+
+                    for ( int j = i + 1; j < parameters.length; j++ )
+                    {
+                        if ( ( parameters[j].equals( prefix[0] ) && parameters[j+1].equals( keys[1] ) )  || ( parameters[j].equals( prefix[1] ) && parameters[j+1].equals( keys[2] ) ) )
+                            break;
+
+                        paramList.append( parameters[ j ] + ' ' );
+                    }
+
+                    params.put( key, paramList.toString().trim() );
+
+                    break;
+                }
+            }
+        }
+
+        System.out.println( "hi" );
     }
 
     private void setParams( String key )

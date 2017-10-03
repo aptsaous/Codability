@@ -33,12 +33,6 @@ public class CommandDecoder
 
         Notifications.showInfo( "Command", cmd.getCommand() );
 
-//        if ( command.matches( "(search for).*|(navigate to).*" ) )
-//            Notifications.showInfo( "Command type", "Hybrid mode" );
-//        else
-//            Notifications.showInfo( "Command type", "Other mode" );
-
-
         cmd.execute();
     }
 

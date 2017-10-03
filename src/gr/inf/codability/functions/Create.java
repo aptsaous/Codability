@@ -46,6 +46,8 @@ public class Create
                 PsiDirectory directory = PsiManager.getInstance( project ).findDirectory( srcDir );
                 JavaDirectoryService.getInstance().createClass( directory, className );
 
+                Notifications.showInfo( "Create Class", "Created Class: " + className );
+
             } );
 
         } );
@@ -97,9 +99,14 @@ public class Create
                 catch ( ConfigurationException e )
                 {
                     e.printStackTrace();
+                    Notifications.showWarning( "Create Project", "Error while creating project" );
+                    return;
                 }
 
                 project.save();
+
+                Notifications.showInfo( "Create Project", "Created Project: " + projectName );
+
             } );
         } );
     }

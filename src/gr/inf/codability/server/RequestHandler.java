@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static gr.inf.codability.core.ActivationCodeGenerator.activationCode;
 import static gr.inf.codability.core.CodabilityRegistration.commandDecoder;
-import static gr.inf.codability.core.Notifications.activationCode;
 import static gr.inf.codability.core.Notifications.syncNotification;
 
 public class RequestHandler extends HttpRequestHandler

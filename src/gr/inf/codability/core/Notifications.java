@@ -4,14 +4,14 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 
 import javax.swing.*;
-import java.util.Random;
+
+import static gr.inf.codability.core.ActivationCodeGenerator.getActivationCode;
 
 public class Notifications
 {
     private static String groupDisplayId = "Codability";
     private static int timerDelay = 3000;
     public static Notification syncNotification;
-    public static String activationCode;
 
     public static void showInfo( String title, String content )
     {
@@ -41,10 +41,8 @@ public class Notifications
     {
 
         String title = "Activation Code";
-        Random random = new Random();
-        activationCode = String.format( "%04d", random.nextInt(10000) );
 
-        syncNotification = new Notification( groupDisplayId, title, activationCode, NotificationType.INFORMATION );
+        syncNotification = new Notification( groupDisplayId, title, getActivationCode(), NotificationType.INFORMATION );
 
         syncNotification.notify(null);
     }

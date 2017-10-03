@@ -4,15 +4,19 @@ import gr.inf.codability.core.Notifications;
 import gr.inf.codability.functions.CaretPosition;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
-import static gr.inf.codability.command.CommandType.INS;
-import static gr.inf.codability.command.CommandType.OP;
-import static gr.inf.codability.functions.Create.createProject;
-import static gr.inf.codability.functions.Open.openClass;
-import static gr.inf.codability.functions.Create.createClass;
-import static gr.inf.codability.functions.WordToNumber.convertWordToNum;
 import static gr.inf.codability.command.CommandDecoder.currentCmdType;
+import static gr.inf.codability.functions.Create.createClass;
+import static gr.inf.codability.functions.Create.createProject;
+import static gr.inf.codability.functions.Execute.executeApp;
+import static gr.inf.codability.functions.Insert.insertInstanceVar;
+import static gr.inf.codability.functions.Insert.insertMain;
+import static gr.inf.codability.functions.Open.openClass;
+import static gr.inf.codability.functions.Open.openProject;
+import static gr.inf.codability.functions.StringManipulation.getClassNameFormat;
+import static gr.inf.codability.functions.StringManipulation.getVariableNameFormat;
+import static gr.inf.codability.functions.StringToPsiType.getPsiType;
+import static gr.inf.codability.functions.WordToNumber.convertWordToNum;
 
 class CommandImpl
 {
@@ -104,15 +108,9 @@ class CommandImpl
         if ( nameOfClass.get( "name" ) == null )
             return;
 
-        String[] tokens = nameOfClass.get( "name" ).split( "\\s" );
-        StringBuilder className = new StringBuilder();
+        String className = getClassNameFormat( nameOfClass, "name" );
 
-        for ( String str : tokens )
-        {
-            className.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
-        }
-
-        openClass( className.toString().trim() );
+        openClass( className );
 
     }
 
@@ -121,15 +119,9 @@ class CommandImpl
         if ( nameOfClass.get( "name" ) == null )
             return;
 
-        String[] tokens = nameOfClass.get( "name" ).split( "\\s" );
-        StringBuilder className = new StringBuilder();
+        String className = getClassNameFormat( nameOfClass, "name" );
 
-        for ( String str : tokens )
-        {
-            className.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
-        }
-
-        createClass( className.toString().trim() );
+        createClass( className );
     }
 
     static void createProjectByName( HashMap<String, String> nameOfProject )
@@ -137,15 +129,37 @@ class CommandImpl
         if ( nameOfProject.get( "name" ) == null )
             return;
 
-        String[] tokens = nameOfProject.get( "name" ).split( "\\s" );
-        StringBuilder projectName = new StringBuilder();
+        String projectName = getClassNameFormat( nameOfProject, "name" );
 
-        for ( String str : tokens )
-        {
-            projectName.append( str.substring( 0, 1 ).toUpperCase() + str.substring(1) );
-        }
-
-        createProject( projectName.toString().trim() );
+        createProject( projectName );
     }
 
+    static void openProjectByName( HashMap<String, String> nameOfProject )
+    {
+        if ( nameOfProject.get( "name" ) == null )
+            return;
+
+        String projectName = getClassNameFormat( nameOfProject, "name" );
+
+        openProject( projectName );
+    }
+
+    static void runApp()
+    {
+        executeApp();
+    }
+
+    static void addInstanceVar( HashMap<String, String> params )
+    {
+        String className = getClassNameFormat( params, "class" );
+        String varName = getVariableNameFormat( params, "name" );
+        String type = params.get( "type" );
+
+        insertInstanceVar(  varName, getPsiType( type ), className );
+    }
+
+    static void createMain()
+    {
+        insertMain();
+    }
 }
