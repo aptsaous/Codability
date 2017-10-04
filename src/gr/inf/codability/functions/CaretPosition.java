@@ -50,6 +50,7 @@ public class CaretPosition
             DataContext dataContext = DataManager.getInstance().getDataContextFromFocus().getResult();
             Project project = DataKeys.PROJECT.getData( dataContext );
 
+
             if ( project == null )
             {
                 Notifications.showWarning( "Caret position", "No opened projects have been found" );

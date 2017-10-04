@@ -148,6 +148,35 @@ public class Command
             name = INSERT_MAIN;
             type = INS;
         }
+        else if ( command.equals( "insert default constructor" ) )
+        {
+            name = INSERT_DFLT_CONSTR;
+            type = INS;
+        }
+        else if ( command.equals( "insert expression" ) )
+        {
+            name = INSERT_EXPR;
+            type = INS;
+        }
+        else if ( command.startsWith( "insert get function" ) )
+        {
+            name = INSERT_GETTER;
+            type = INS;
+
+            setParams( "variable" );
+        }
+        else if ( command.startsWith( "insert set function" ) )
+        {
+            name = INSERT_SETTER;
+            type = INS;
+
+            setParams( "variable" );
+        }
+        else if ( command.startsWith( "print" ) )
+        {
+            name = PRINT;
+            type = INS;
+        }
 
     }
 
@@ -173,6 +202,16 @@ public class Command
             addInstanceVar( params );
         else if ( name == INSERT_MAIN )
             createMain();
+        else if ( name == INSERT_DFLT_CONSTR )
+            createDefaultConstructor();
+        else if ( name == INSERT_EXPR )
+            createExpression();
+        else if ( name == INSERT_GETTER )
+            createGetter( params );
+        else if ( name == INSERT_SETTER )
+            createSetter( params );
+        else if ( name == PRINT )
+            print( command );
     }
 
     private void setParamsInstanceVar( String[] keys, String[] prefix )
@@ -199,8 +238,6 @@ public class Command
                 }
             }
         }
-
-        System.out.println( "hi" );
     }
 
     private void setParams( String key )

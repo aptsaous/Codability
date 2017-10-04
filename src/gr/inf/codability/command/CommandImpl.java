@@ -9,8 +9,7 @@ import static gr.inf.codability.command.CommandDecoder.currentCmdType;
 import static gr.inf.codability.functions.Create.createClass;
 import static gr.inf.codability.functions.Create.createProject;
 import static gr.inf.codability.functions.Execute.executeApp;
-import static gr.inf.codability.functions.Insert.insertInstanceVar;
-import static gr.inf.codability.functions.Insert.insertMain;
+import static gr.inf.codability.functions.Insert.*;
 import static gr.inf.codability.functions.Open.openClass;
 import static gr.inf.codability.functions.Open.openProject;
 import static gr.inf.codability.functions.StringManipulation.getClassNameFormat;
@@ -161,5 +160,40 @@ class CommandImpl
     static void createMain()
     {
         insertMain();
+    }
+
+    static void createDefaultConstructor()
+    {
+        insertDefaultConstructor();
+    }
+
+    static void createExpression()
+    {
+        insertExpression();
+    }
+
+    static void createGetter( HashMap<String, String> naneOfVar )
+    {
+        if ( naneOfVar.get( "variable" ) == null )
+            return;
+
+        String varName = getVariableNameFormat( naneOfVar, "variable" );
+
+        insertGetterFunction( varName );
+    }
+
+    static void createSetter( HashMap<String, String> naneOfVar )
+    {
+        if ( naneOfVar.get( "variable" ) == null )
+            return;
+
+        String varName = getVariableNameFormat( naneOfVar, "variable" );
+
+        insertSetterFunction( varName );
+    }
+
+    static void print( String text )
+    {
+        insertPrintFunction( text.replaceFirst( "print ", "" ) );
     }
 }
